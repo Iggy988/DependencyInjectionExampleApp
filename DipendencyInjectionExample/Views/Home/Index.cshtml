@@ -1,0 +1,31 @@
+﻿@model IEnumerable<string>
+@*injecting service in View direktno, a ne preko controllera (model)*@
+@inject ICitiesService citiesServiceInView  
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h1>Cities</h1>
+
+@{
+    List<string> citiesFromServiceInView = citiesServiceInView.GetCities();
+}
+
+<ul class="list">
+    @*injecting service in View direktno, a ne preko controllera (Model)*@
+    @*@foreach (string city in Model)*@
+        @foreach (string city in citiesFromServiceInView)
+    {
+        <li>@city</li>
+    }
+</ul>
+
+<div>@ViewBag.InstanceId_CiriesService_1</div>
+<div>@ViewBag.InstanceId_CiriesService_2</div>
+<div>@ViewBag.InstanceId_CiriesService_3</div>
+
+<div>@ViewBag.InstanceId_CiriesService_3</div>
+
+
+<div class="box">@citiesServiceInView.ServiceInstanceId</div>
